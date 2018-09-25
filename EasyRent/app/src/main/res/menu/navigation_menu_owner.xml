@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:id="@+id/postAdd"
+        android:title="Create Post"/>
+
+    <item android:id="@+id/managePost"
+        android:title="Manage Post"/>
+    <item android:id="@+id/LogoutO"
+        android:title="Logout"/>
+
+</menu>
