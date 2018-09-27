@@ -1,9 +1,15 @@
 package com.example.bdafahim.easyrent;
 
+import android.content.Intent;
 import android.support.annotation.NonNull;
+import android.support.design.widget.NavigationView;
+import android.support.v4.view.GravityCompat;
+import android.support.v4.widget.DrawerLayout;
+import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.MenuItem;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
@@ -18,7 +24,7 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 
-public class OwnerProfile extends AppCompatActivity {
+public class OwnerProfile extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
 
     private static final String TAG = "ViewOwnerInformation";
 
@@ -29,6 +35,9 @@ public class OwnerProfile extends AppCompatActivity {
     private DatabaseReference myRef;
     private  String userID;
 
+    private DrawerLayout mDrawer;
+    private ActionBarDrawerToggle mToggle;
+
     private ListView mListView;
 
     @Override
@@ -37,6 +46,14 @@ public class OwnerProfile extends AppCompatActivity {
         setContentView(R.layout.activity_owner_profile);
 
         mListView = (ListView) findViewById(R.id.listviewO);
+        mDrawer = findViewById(R.id.drawer_owner);
+
+        //toogle button
+        mToggle = new ActionBarDrawerToggle(OwnerProfile.this,mDrawer,R.string.open,R.string.close);
+        mToggle.syncState();
+        mDrawer.addDrawerListener(mToggle);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        setNavigationViewListner();
 
         //declare the database reference object. This is what we use to access the database.
         //NOTE: Unless you are signed in, this will not be useable.
@@ -80,6 +97,16 @@ public class OwnerProfile extends AppCompatActivity {
 
     }
 
+    //for support action bar
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+
+        if(mToggle.onOptionsItemSelected(item)) {
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
     private void showData(DataSnapshot dataSnapshot) {
         for(DataSnapshot ds : dataSnapshot.getChildren()){
             Toast.makeText(OwnerProfile.this,"Inside Datasnapshot 2",Toast.LENGTH_SHORT).show();
@@ -97,10 +124,10 @@ public class OwnerProfile extends AppCompatActivity {
             Log.d(TAG,"showData: address: "+uinfo.getUaddress());
 
             ArrayList<String> array = new ArrayList<>();
-            array.add(uinfo.getUName());
-            array.add(uinfo.getUemail());
-            array.add(uinfo.getUphoneNo());
-            array.add(uinfo.getUaddress());
+            array.add("Name    : "+uinfo.getUName());
+            array.add("Email   : "+uinfo.getUemail());
+            array.add("PhoneNo : "+uinfo.getUphoneNo());
+            array.add("Address : "+uinfo.getUaddress());
             ArrayAdapter adapter = new ArrayAdapter(this,android.R.layout.simple_list_item_1,array);
             mListView.setAdapter(adapter);
         }
@@ -115,5 +142,36 @@ public class OwnerProfile extends AppCompatActivity {
      */
     private void toastMessage(String message){
         Toast.makeText(this,message,Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
+        // Handle navigation view item clicks here.
+        switch (menuItem.getItemId()) {
+
+            case R.id.postAdd: {
+                //do somthing
+                startActivity(new Intent(OwnerProfile.this,Post_Add.class));
+                toastMessage("PostAdd Button clicked");
+                break;
+            }
+            case R.id.managePost:{
+                toastMessage("Manage Post Clicked");
+                break;
+            }
+            case R.id.LogoutO:{
+                toastMessage("Logout clicked");
+                break;
+            }
+        }
+        //close navigation drawer
+
+        mDrawer.closeDrawer(GravityCompat.START);
+        return true;
+    }
+
+    private void setNavigationViewListner() {
+        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_viewO);
+        navigationView.setNavigationItemSelectedListener(this);
     }
 }

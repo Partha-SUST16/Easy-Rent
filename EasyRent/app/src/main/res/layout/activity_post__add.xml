@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Post_Add"
+    android:orientation="vertical">
+<TextView
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:textAlignment="center"
+    android:text="Post for RENT"
+    android:textSize="30sp"
+    android:padding="15dp"
+    />
+
+<RadioGroup
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:id="@+id/radio_group"
+    android:layout_marginTop="15dp">
+    <RadioButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Single Seat"
+        android:id="@+id/single_seat"
+        />
+    <RadioButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Full Flat"
+        android:id="@+id/full_flat"/>
+
+</RadioGroup>
+
+<EditText
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="20dp"
+    android:hint="House No."
+    android:id="@+id/house_no"
+    android:layout_marginBottom="20dp"
+    android:inputType="text"/>
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Road No"
+        android:id="@+id/road_no"
+        android:layout_marginBottom="20dp"
+        android:inputType="text"/>
+     <EditText
+         android:layout_width="match_parent"
+         android:layout_height="wrap_content"
+         android:hint="Area"
+         android:inputType="text"
+         android:id="@+id/area"
+         android:layout_marginBottom="20dp"/>
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="number"
+        android:hint="Phone No"
+        android:id="@+id/phone_no"
+        android:layout_marginBottom="20dp"/>
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/email"
+        android:inputType="text"
+        android:hint="Email"
+        android:layout_marginBottom="20dp"/>
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="Submit"
+        android:id="@+id/submit"/>
+
+</LinearLayout>

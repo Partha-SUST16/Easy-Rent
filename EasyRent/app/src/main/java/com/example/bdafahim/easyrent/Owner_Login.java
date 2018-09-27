@@ -77,7 +77,7 @@ public class Owner_Login extends AppCompatActivity  {
             return;
         }
 
-        progressDialog.setMessage("Sign up is in progress");
+        progressDialog.setMessage("Log in is in progress");
         progressDialog.show();
 
         mAuth.signInWithEmailAndPassword(EmailL,PasswordL)
