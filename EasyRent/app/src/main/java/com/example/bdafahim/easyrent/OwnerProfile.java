@@ -23,6 +23,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
+import java.util.Map;
 
 public class OwnerProfile extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
 
@@ -79,13 +80,25 @@ public class OwnerProfile extends AppCompatActivity implements NavigationView.On
                 // ...
             }
         };
+        /*DatabaseReference ref = FirebaseDatabase.getInstance().getReference().child("Users");
+        ref.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                collectData((Map<String,Object>)dataSnapshot.getValue());
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });*/
 
         myRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 // This method is called once with the initial value and again
                 // whenever data at this location is updated.
-                Toast.makeText(OwnerProfile.this,"Inside Datasnapshot1",Toast.LENGTH_SHORT).show();
+               // Toast.makeText(OwnerProfile.this,"Inside Datasnapshot1",Toast.LENGTH_SHORT).show();
                 showData(dataSnapshot);
             }
 
@@ -94,6 +107,21 @@ public class OwnerProfile extends AppCompatActivity implements NavigationView.On
 
             }
         });
+
+    }
+    public void collectData(Map<String,Object>users)
+    {
+        ArrayList<String> array = new ArrayList<>();
+        for(Map.Entry<String,Object>entry:users.entrySet()){
+            Map singleUser = (Map) entry.getValue();
+
+            array.add((String) singleUser.get("UName"));
+            array.add((String) singleUser.get("Uemail"));
+            array.add((String) singleUser.get("UphoneNo"));
+            array.add((String)"\n");
+        }
+        ArrayAdapter adapter = new ArrayAdapter(this,android.R.layout.simple_list_item_1,array);
+        mListView.setAdapter(adapter);
 
     }
 
@@ -107,15 +135,21 @@ public class OwnerProfile extends AppCompatActivity implements NavigationView.On
         return super.onOptionsItemSelected(item);
     }
 
-    private void showData(DataSnapshot dataSnapshot) {
+   private void showData(DataSnapshot dataSnapshot) {
         for(DataSnapshot ds : dataSnapshot.getChildren()){
-            Toast.makeText(OwnerProfile.this,"Inside Datasnapshot 2",Toast.LENGTH_SHORT).show();
+           // Toast.makeText(OwnerProfile.this,"Inside Datasnapshot 2",Toast.LENGTH_SHORT).show();
 
             User_Information uinfo = new User_Information();
+            Rent_Add rent = new Rent_Add();
+
+            /*PPost temp = new PPost();
+            temp.setUserid(ds.getValue(PPost.class).getUserid());*/
             uinfo.setUName(ds.child(userID).getValue(User_Information.class).getUName());
             uinfo.setUemail(ds.child(userID).getValue(User_Information.class).getUemail());
             uinfo.setUphoneNo(ds.child(userID).getValue(User_Information.class).getUphoneNo());
             uinfo.setUaddress(ds.child(userID).getValue(User_Information.class).getUaddress());
+
+
 
             //display all the information
             Log.d(TAG, "showData: name: " + uinfo.getUName());
@@ -128,6 +162,9 @@ public class OwnerProfile extends AppCompatActivity implements NavigationView.On
             array.add("Email   : "+uinfo.getUemail());
             array.add("PhoneNo : "+uinfo.getUphoneNo());
             array.add("Address : "+uinfo.getUaddress());
+
+
+
             ArrayAdapter adapter = new ArrayAdapter(this,android.R.layout.simple_list_item_1,array);
             mListView.setAdapter(adapter);
         }
@@ -157,6 +194,7 @@ public class OwnerProfile extends AppCompatActivity implements NavigationView.On
             }
             case R.id.managePost:{
                 toastMessage("Manage Post Clicked");
+                startActivity(new Intent(OwnerProfile.this,Manage_Post.class));
                 break;
             }
             case R.id.LogoutO:{

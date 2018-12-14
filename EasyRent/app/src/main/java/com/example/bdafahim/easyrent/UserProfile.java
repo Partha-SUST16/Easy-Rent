@@ -68,7 +68,7 @@ public class UserProfile extends AppCompatActivity {
             public void onDataChange(DataSnapshot dataSnapshot) {
                 // This method is called once with the initial value and again
                 // whenever data at this location is updated.
-                Toast.makeText(UserProfile.this,"Inside Datasnapshot1",Toast.LENGTH_SHORT).show();
+               // Toast.makeText(UserProfile.this,"Inside Datasnapshot1",Toast.LENGTH_SHORT).show();
                 showData(dataSnapshot);
             }
 
@@ -82,7 +82,7 @@ public class UserProfile extends AppCompatActivity {
 
     private void showData(DataSnapshot dataSnapshot) {
         for(DataSnapshot ds : dataSnapshot.getChildren()){
-            Toast.makeText(UserProfile.this,"Inside Datasnapshot 2",Toast.LENGTH_SHORT).show();
+          //  Toast.makeText(UserProfile.this,"Inside Datasnapshot 2",Toast.LENGTH_SHORT).show();
 
             User_Information uinfo = new User_Information();
             uinfo.setUName(ds.child(userID).getValue(User_Information.class).getUName());

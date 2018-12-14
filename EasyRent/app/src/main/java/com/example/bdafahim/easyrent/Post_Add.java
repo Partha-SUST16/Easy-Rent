@@ -28,7 +28,7 @@ import com.google.firebase.database.FirebaseDatabase;
 public class Post_Add extends AppCompatActivity  {
     //variables of used button and edittext
     private Button post;
-    private EditText housetxt, roadtxt, addresstxt, phonetxt, emailtxt;
+    private EditText housetxt, roadtxt, addresstxt, phonetxt, emailtxt,rentxt,nametxt;
 
     private double lati, longi;
     private FirebaseDatabase mFirebaseDatabase;
@@ -53,6 +53,8 @@ public class Post_Add extends AppCompatActivity  {
         addresstxt = findViewById(R.id.area);
         phonetxt = findViewById(R.id.phone_no);
         emailtxt = findViewById(R.id.email);
+        nametxt = findViewById(R.id.owner_name);
+        rentxt = findViewById(R.id.rentfee);
         progressDialog = new ProgressDialog(this);
         radioGroup = findViewById(R.id.radio_group);
         mAuth = FirebaseAuth.getInstance();
@@ -82,39 +84,45 @@ public class Post_Add extends AppCompatActivity  {
     }
 
     void POST_PROCESS(){
-        String house_no, road_no, address, phone_no, email_no;
-        progressDialog.setMessage("Posting in process...");
-        progressDialog.show();
-        address = addresstxt.getText().toString();
-        phone_no = phonetxt.getText().toString();
-        email_no = emailtxt.getText().toString();
-        house_no = housetxt.getText().toString();
-        road_no = roadtxt.getText().toString();
 
-        int selected = radioGroup.getCheckedRadioButtonId();
-        RadioButton rb =(RadioButton) findViewById(selected);
+            String house_no, road_no, address, phone_no, email_no,ownername;
+            int rentfee;
+            progressDialog.setMessage("Posting in process...");
+            progressDialog.show();
+            address = addresstxt.getText().toString();
+            phone_no = phonetxt.getText().toString();
+            email_no = emailtxt.getText().toString();
+            house_no = housetxt.getText().toString();
+            road_no = roadtxt.getText().toString();
+            ownername = nametxt.getText().toString();
+            rentfee = Integer.parseInt(rentxt.getText().toString());
 
-        String type = rb.getText().toString();
+            int selected = radioGroup.getCheckedRadioButtonId();
+            RadioButton rb =(RadioButton) findViewById(selected);
 
-        rent_add = new Rent_Add(type,house_no,road_no,address,phone_no,email_no,lati,longi);
+            String type = rb.getText().toString();
 
-        mFirebaseDatabase.getReference("Users")
-                .child(mAuth.getCurrentUser().getUid())
-                .child("Posts")
-                .setValue(rent_add).addOnCompleteListener(new OnCompleteListener<Void>() {
-            @Override
-            public void onComplete(@NonNull Task<Void> task) {
-                if (task.isSuccessful()) {
-                    progressDialog.dismiss();
-                    Toast.makeText(Post_Add.this, "Posting Successful", Toast.LENGTH_LONG).show();
-                    finish();
-                } else {
-                    progressDialog.dismiss();
-                    //display a failure message
-                    Toast.makeText(Post_Add.this,task.getException().getMessage(),Toast.LENGTH_LONG).show();
+            rent_add = new Rent_Add(house_no,ownername,road_no,address,phone_no,email_no,type,rentfee,lati,longi);
+
+            mFirebaseDatabase.getReference("Users")
+                    .child(mAuth.getCurrentUser().getUid())
+                    .child("Posts").push()
+                    .setValue(rent_add).addOnCompleteListener(new OnCompleteListener<Void>() {
+                @Override
+                public void onComplete(@NonNull Task<Void> task) {
+                    if (task.isSuccessful()) {
+                        progressDialog.dismiss();
+                        Toast.makeText(Post_Add.this, "Posting Successful", Toast.LENGTH_LONG).show();
+                        finish();
+                    } else {
+                        progressDialog.dismiss();
+                        //display a failure message
+                        Toast.makeText(Post_Add.this,task.getException().getMessage(),Toast.LENGTH_LONG).show();
+                    }
                 }
-            }
-        });
+            });
+
+
     }
     public void getLocation(View view){
         gpsTracker = new GpsTracker(Post_Add.this);

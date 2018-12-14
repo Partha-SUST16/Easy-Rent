@@ -24,7 +24,8 @@
         <activity android:name=".SignUp" />
         <activity android:name=".UserProfile" />
         <activity android:name=".OwnerProfile" />
-        <activity android:name=".Post_Add"></activity>
+        <activity android:name=".Post_Add" />
+        <activity android:name=".Manage_Post"></activity>
     </application>
 
 </manifest>
