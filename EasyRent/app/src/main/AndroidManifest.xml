@@ -25,7 +25,8 @@
         <activity android:name=".UserProfile" />
         <activity android:name=".OwnerProfile" />
         <activity android:name=".Post_Add" />
-        <activity android:name=".Manage_Post"></activity>
+        <activity android:name=".Manage_Post" />
+        <activity android:name=".UpdateDelete"></activity>
     </application>
 
 </manifest>

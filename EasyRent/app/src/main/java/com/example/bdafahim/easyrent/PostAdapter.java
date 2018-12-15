@@ -36,6 +36,7 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.MyViewHolder> 
         myViewHolder.email_txt.setText(ra.getEmail());
         myViewHolder.area_text.setText(ra.getArea());
         myViewHolder.name_txt.setText(ra.getOwner_name());
+        myViewHolder.key_val.setText(ra.getKey());
     }
 
     @Override
@@ -45,7 +46,7 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.MyViewHolder> 
 
     class MyViewHolder extends RecyclerView.ViewHolder {
 
-      TextView type_txt,rent_txt,area_text,phone_txt,email_txt,name_txt;
+      TextView type_txt,rent_txt,area_text,phone_txt,email_txt,name_txt,key_val;
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
             type_txt = itemView.findViewById(R.id.type_id);
@@ -54,6 +55,7 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.MyViewHolder> 
             phone_txt = itemView.findViewById(R.id.phone_rentid);
             email_txt = itemView.findViewById(R.id.emal_rentid);
             name_txt =itemView.findViewById(R.id.renter_nameid);
+            key_val = itemView.findViewById(R.id.rent_key);
             // textViewCountry = itemView.findViewById(R.id.text_view_country);
         }
     }

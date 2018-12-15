@@ -101,13 +101,16 @@ public class Post_Add extends AppCompatActivity  {
             RadioButton rb =(RadioButton) findViewById(selected);
 
             String type = rb.getText().toString();
+            String key= mFirebaseDatabase.getReference("Users")
+                    .child(mAuth.getCurrentUser().getUid())
+                    .child("Posts").push().getKey();;
+            rent_add = new Rent_Add(house_no,ownername,road_no,address,phone_no,email_no,type,rentfee,lati,longi,key);
 
-            rent_add = new Rent_Add(house_no,ownername,road_no,address,phone_no,email_no,type,rentfee,lati,longi);
 
             mFirebaseDatabase.getReference("Users")
                     .child(mAuth.getCurrentUser().getUid())
-                    .child("Posts").push()
-                    .setValue(rent_add).addOnCompleteListener(new OnCompleteListener<Void>() {
+                    .child("Posts").child(key)
+                    .setValue(rent_add,key).addOnCompleteListener(new OnCompleteListener<Void>() {
                 @Override
                 public void onComplete(@NonNull Task<Void> task) {
                     if (task.isSuccessful()) {

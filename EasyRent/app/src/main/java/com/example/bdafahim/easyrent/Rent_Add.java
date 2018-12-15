@@ -1,7 +1,7 @@
 package com.example.bdafahim.easyrent;
 
 public class Rent_Add {
-    private String house_no,owner_name;
+    private String house_no,owner_name,key;
     private String road_no,area,phone_no,email,type;
     private int fee;
     private double lati,longi;
@@ -16,7 +16,7 @@ public class Rent_Add {
         this.longi = longi;
     }
 
-    public Rent_Add(String house_no, String owner_name, String road_no, String area, String phone_no, String email, String type, int fee, double lati, double longi) {
+    public Rent_Add(String house_no, String owner_name, String road_no, String area, String phone_no, String email, String type, int fee, double lati, double longi,String key) {
         this.house_no = house_no;
         this.owner_name = owner_name;
         this.road_no = road_no;
@@ -27,6 +27,15 @@ public class Rent_Add {
         this.fee = fee;
         this.lati = lati;
         this.longi = longi;
+        this.key = key;
+    }
+
+    public String getKey() {
+        return key;
+    }
+
+    public void setKey(String key) {
+        this.key = key;
     }
 
     public String getOwner_name() {

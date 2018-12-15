@@ -52,6 +52,12 @@
                 android:id="@+id/rent_areaid"
                 android:layout_gravity="center_horizontal"
                 android:text="place"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/rent_key"
+                android:layout_gravity="center_horizontal"
+                android:text="key"/>
 
 
         </LinearLayout>
