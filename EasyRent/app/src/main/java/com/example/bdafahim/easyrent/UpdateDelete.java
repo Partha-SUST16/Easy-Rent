@@ -1,5 +1,6 @@
 package com.example.bdafahim.easyrent;
 
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -27,7 +28,7 @@ public class UpdateDelete extends AppCompatActivity {
     private Button btn_update,btn_delete;
     private EditText type,owner,house,road,area,phone,email,fee,lati,longi;
     private String key;
-    private DatabaseReference mRef;
+    private DatabaseReference mRef,mRef2;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -45,14 +46,15 @@ public class UpdateDelete extends AppCompatActivity {
         lati = findViewById(R.id.ulati);
         longi = findViewById(R.id.ulongi);
 
-       // PROCESS1();
+        // PROCESS1();
         btn_update = findViewById(R.id.update_btn);
         btn_delete = findViewById(R.id.delete_btn);
 
         mRef = FirebaseDatabase.getInstance().getReference().child("Users")
                 .child(FirebaseAuth.getInstance().getCurrentUser().getUid())
                 .child("Posts").child(key);
-
+        mRef2 = FirebaseDatabase.getInstance().getReference("Users").child("POSTS")
+                .child(key);
         btn_delete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -61,14 +63,23 @@ public class UpdateDelete extends AppCompatActivity {
                     public void onComplete(@NonNull Task<Void> task) {
                         if(task.isSuccessful())
                         {
-                            Toast.makeText(UpdateDelete.this,"Post delete SuccessFull",Toast.LENGTH_LONG).show();
+                            mRef2.removeValue().addOnCompleteListener(new OnCompleteListener<Void>() {
+                                @Override
+                                public void onComplete(@NonNull Task<Void> task) {
+                                    if(task.isSuccessful())
+                                        Toast.makeText(UpdateDelete.this,"Delete Successful",Toast.LENGTH_LONG).show();
+                                }
+                            });
+                            //finish();
+                            startActivity(new Intent(UpdateDelete.this,OwnerProfile.class));
                         }
                         else
                             Toast.makeText(UpdateDelete.this,task.getException().toString(),Toast.LENGTH_LONG).show();
 
                     }
                 });
-                finish();
+
+                //finish();
             }
         });
         btn_update.setOnClickListener(new View.OnClickListener() {
@@ -80,11 +91,28 @@ public class UpdateDelete extends AppCompatActivity {
 
         DatabaseReference ref = FirebaseDatabase.getInstance().getReference().child("Users")
                 .child(FirebaseAuth.getInstance().getCurrentUser().getUid())
-                .child("Posts");
+                .child("Posts").child(key);
         ref.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                collectData((Map<String,Object>)dataSnapshot.getValue());
+            public void onDataChange(DataSnapshot ds) {
+
+                    //uinfo.setUName(ds.child(userID).getValue(User_Information.class).getUName());
+                    Rent_Add rent_add = new Rent_Add();
+                    email.setText(ds.getValue(Rent_Add.class).getEmail());
+                    owner.setText(ds.getValue(Rent_Add.class).getOwner_name());
+                    phone.setText(ds.getValue(Rent_Add.class).getPhone_no());
+                    area.setText(ds.getValue(Rent_Add.class).getArea());
+                    road.setText(ds.getValue(Rent_Add.class).getRoad_no());
+                    type.setText(ds.getValue(Rent_Add.class).getType());
+                    house.setText(ds.getValue(Rent_Add.class).getHouse_no());
+                    int Fee = ds.getValue(Rent_Add.class).getFee();
+                    fee.setText(Integer.toString(Fee));
+
+                    double temp = ds.getValue(Rent_Add.class).getLati();
+                    lati.setText(Double.toString(temp));
+                    temp = ds.getValue(Rent_Add.class).getLongi();
+                    longi.setText(Double.toString(temp));
+
             }
 
             @Override
@@ -93,35 +121,7 @@ public class UpdateDelete extends AppCompatActivity {
             }
         });
     }
-    public void collectData(Map<String,Object> users)
-    {
-        ArrayList<String> array = new ArrayList<>();
-        for(Map.Entry<String,Object>entry:users.entrySet()){
-            Map singleUser = (Map) entry.getValue();
 
-           email.setText((String)singleUser.get("email"));
-           owner.setText((String)singleUser.get("owner_name"));
-           phone.setText((String)singleUser.get("phone_no"));
-           long temp = (Long)singleUser.get("fee");
-          // int ree = Integer.parseInt(temp);
-           fee.setText(Long.toString(temp));
-            area.setText((String)singleUser.get("area"));
-            road.setText((String)singleUser.get("road_no"));
-            type.setText((String)singleUser.get("type"));
-           double temp1 = (Double)singleUser.get("lati");
-           lati.setText(Double.toString(temp1));
-            temp1 = (Double)singleUser.get("longi");
-            longi.setText(Double.toString(temp1));
-            Log.d("UpdateDelete",Long.toString(temp));
-            Log.d("UpdateDelete",Double.toString(temp1));
-            Log.d("UpdateDelete",Double.toString(temp1));
-            Log.d("UpdateDelete",Double.toString(temp1));
-            Log.d("UpdateDelete",Double.toString(temp1));
-            house.setText((String)singleUser.get("house_no"));
-        }
-
-
-    }
     private void PROCESS2(){
         String house_no, road_no, address, phone_no, email_no,ownername,type1;
         double lati1,longi1;
@@ -136,17 +136,26 @@ public class UpdateDelete extends AppCompatActivity {
         rentfee=Integer.parseInt(fee.getText().toString());
         lati1 = Double.parseDouble(lati.getText().toString());
         longi1=Double.parseDouble(longi.getText().toString());
-        Rent_Add rent_add = new Rent_Add(house_no,ownername,road_no,address,phone_no,email_no,type1,rentfee,lati1,longi1,key);
+        final Rent_Add rent_add = new Rent_Add(house_no,ownername,road_no,address,phone_no,email_no,type1,rentfee,lati1,longi1,key);
         mRef.setValue(rent_add).addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override
             public void onComplete(@NonNull Task<Void> task) {
                 if(task.isSuccessful()){
-                    Toast.makeText(UpdateDelete.this,"Update Successfull",Toast.LENGTH_SHORT).show();
+
+                    mRef2.setValue(rent_add).addOnCompleteListener(new OnCompleteListener<Void>() {
+                        @Override
+                        public void onComplete(@NonNull Task<Void> task) {
+                            if(task.isSuccessful())
+                                Toast.makeText(UpdateDelete.this,"Update Successfull",Toast.LENGTH_SHORT).show();
+
+                        }
+                    });
                     finish();
                 }
                 else
                     Toast.makeText(UpdateDelete.this,task.getException().toString(),Toast.LENGTH_LONG).show();
             }
-        })   ;
+        });
+
     }
 }

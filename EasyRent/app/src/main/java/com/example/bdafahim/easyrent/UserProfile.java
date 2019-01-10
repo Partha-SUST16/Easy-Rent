@@ -1,9 +1,14 @@
 package com.example.bdafahim.easyrent;
 
 import android.support.annotation.NonNull;
+import android.support.design.widget.NavigationView;
+import android.support.v4.view.GravityCompat;
+import android.support.v4.widget.DrawerLayout;
+import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.MenuItem;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
@@ -18,7 +23,7 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 
-public class UserProfile extends AppCompatActivity {
+public class UserProfile extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
     private static final String TAG = "ViewUserInformation";
 
@@ -30,6 +35,9 @@ public class UserProfile extends AppCompatActivity {
     private  String userID;
 
     private ListView mListView;
+
+    private DrawerLayout mDrawer;
+    private ActionBarDrawerToggle mToggle;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,6 +53,15 @@ public class UserProfile extends AppCompatActivity {
         myRef = mFirebaseDatabase.getReference();
         FirebaseUser user = mAuth.getCurrentUser();
         userID = user.getUid();
+
+        mDrawer = findViewById(R.id.drawer_User);
+
+        //toogle button
+        mToggle = new ActionBarDrawerToggle(UserProfile.this,mDrawer,R.string.open,R.string.close);
+        mToggle.syncState();
+        mDrawer.addDrawerListener(mToggle);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        setNavigationViewListner();
 
         mAuthListener = new FirebaseAuth.AuthStateListener() {
             @Override
@@ -116,5 +133,22 @@ public class UserProfile extends AppCompatActivity {
     private void toastMessage(String message){
         Toast.makeText(this,message,Toast.LENGTH_SHORT).show();
     }
+    private void setNavigationViewListner() {
+        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_viewU);
+        navigationView.setNavigationItemSelectedListener(this);
+    }
+    //for support action bar
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
 
+        if(mToggle.onOptionsItemSelected(item)) {
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
+    }
+    @Override
+    public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
+        mDrawer.closeDrawer(GravityCompat.START);
+        return true;
+    }
 }
