@@ -41,6 +41,7 @@ public class Post_Add extends AppCompatActivity  {
     private RadioGroup radioGroup;
     private GpsTracker gpsTracker;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -106,6 +107,7 @@ public class Post_Add extends AppCompatActivity  {
                     .child("Posts").push().getKey();;
             rent_add = new Rent_Add(house_no,ownername,road_no,address,phone_no,email_no,type,rentfee,lati,longi,key);
 
+    try{
 
             mFirebaseDatabase.getReference("Users")
                     .child(mAuth.getCurrentUser().getUid())
@@ -115,8 +117,8 @@ public class Post_Add extends AppCompatActivity  {
                 public void onComplete(@NonNull Task<Void> task) {
                     if (task.isSuccessful()) {
                         progressDialog.dismiss();
-                        Toast.makeText(Post_Add.this, "Posting Successful", Toast.LENGTH_LONG).show();
-                        finish();
+                        //Toast.makeText(Post_Add.this, "Posting Successful", Toast.LENGTH_LONG).show();
+                       // finish();
                     } else {
                         progressDialog.dismiss();
                         //display a failure message
@@ -124,8 +126,30 @@ public class Post_Add extends AppCompatActivity  {
                     }
                 }
             });
+            POST_PROCESS2(key,rent_add);
+    }catch (Exception e){
+        Toast.makeText(Post_Add.this,e.getMessage().toString(),Toast.LENGTH_LONG).show();
+    }
 
 
+    }
+    void POST_PROCESS2(String key,Rent_Add rent_add)
+    {
+        FirebaseDatabase.getInstance().getReference("Users").child("POSTS")
+                .child(key).setValue(rent_add).addOnCompleteListener(new OnCompleteListener<Void>() {
+            @Override
+            public void onComplete(@NonNull Task<Void> task) {
+                if (task.isSuccessful()) {
+                    progressDialog.dismiss();
+                    Toast.makeText(Post_Add.this, "Posting Successful", Toast.LENGTH_LONG).show();
+                    finish();
+                } else {
+                    progressDialog.dismiss();
+                    //display a failure message
+                    Toast.makeText(Post_Add.this,task.getException().getMessage(),Toast.LENGTH_LONG).show();
+                }
+            }
+        });
     }
     public void getLocation(View view){
         gpsTracker = new GpsTracker(Post_Add.this);

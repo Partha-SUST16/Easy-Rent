@@ -31,6 +31,7 @@ public class Manage_Post extends AppCompatActivity {
     private List addList;
     private DatabaseReference databaseReference;
 
+
     public static interface ClickListener{
         public void onClick(View view,int position);
         public void onLongClick(View view,int position);

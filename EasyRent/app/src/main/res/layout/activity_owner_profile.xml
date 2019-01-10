@@ -16,6 +16,8 @@
         android:textAlignment="center"
         android:textSize="25sp"
         android:text="OwnerInformation"
+        android:textStyle="bold"
+        android:textColor="@color/colorPrimaryDark"
         android:id="@+id/tvOwnerInfo"
 
         />

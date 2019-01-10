@@ -80,18 +80,7 @@ public class OwnerProfile extends AppCompatActivity implements NavigationView.On
                 // ...
             }
         };
-        /*DatabaseReference ref = FirebaseDatabase.getInstance().getReference().child("Users");
-        ref.addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                collectData((Map<String,Object>)dataSnapshot.getValue());
-            }
 
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-
-            }
-        });*/
 
         myRef.addValueEventListener(new ValueEventListener() {
             @Override
@@ -107,21 +96,6 @@ public class OwnerProfile extends AppCompatActivity implements NavigationView.On
 
             }
         });
-
-    }
-    public void collectData(Map<String,Object>users)
-    {
-        ArrayList<String> array = new ArrayList<>();
-        for(Map.Entry<String,Object>entry:users.entrySet()){
-            Map singleUser = (Map) entry.getValue();
-
-            array.add((String) singleUser.get("UName"));
-            array.add((String) singleUser.get("Uemail"));
-            array.add((String) singleUser.get("UphoneNo"));
-            array.add((String)"\n");
-        }
-        ArrayAdapter adapter = new ArrayAdapter(this,android.R.layout.simple_list_item_1,array);
-        mListView.setAdapter(adapter);
 
     }
 
@@ -142,8 +116,7 @@ public class OwnerProfile extends AppCompatActivity implements NavigationView.On
             User_Information uinfo = new User_Information();
             Rent_Add rent = new Rent_Add();
 
-            /*PPost temp = new PPost();
-            temp.setUserid(ds.getValue(PPost.class).getUserid());*/
+
             uinfo.setUName(ds.child(userID).getValue(User_Information.class).getUName());
             uinfo.setUemail(ds.child(userID).getValue(User_Information.class).getUemail());
             uinfo.setUphoneNo(ds.child(userID).getValue(User_Information.class).getUphoneNo());
@@ -199,6 +172,8 @@ public class OwnerProfile extends AppCompatActivity implements NavigationView.On
             }
             case R.id.LogoutO:{
                 toastMessage("Logout clicked");
+                FirebaseAuth.getInstance().signOut();
+                startActivity(new Intent(OwnerProfile.this,UserCatagory.class));
                 break;
             }
         }

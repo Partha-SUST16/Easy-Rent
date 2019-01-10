@@ -9,8 +9,10 @@
 <TextView
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:textStyle="bold"
     android:textAlignment="center"
     android:text="Post for RENT"
+    android:textColor="@color/colorPrimaryDark"
     android:textSize="30sp"
     android:padding="15dp"
     />
@@ -24,79 +26,137 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Single Seat"
+        android:textStyle="italic"
+        android:textColor="@color/colorPrimaryDark"
         android:id="@+id/single_seat"
         />
     <RadioButton
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:textColor="@color/colorPrimaryDark"
+        android:textStyle="italic"
         android:text="Full Flat"
         android:id="@+id/full_flat"/>
 
 </RadioGroup>
+
     <ScrollView
         android:layout_width="fill_parent"
         android:layout_height="fill_parent">
-<LinearLayout
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:orientation="vertical">
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/owner_name"
-        android:hint="Enter House Owner Name"
-       />
-    <EditText
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:layout_marginTop="20dp"
-    android:hint="House No."
-    android:id="@+id/house_no"
-    android:layout_marginBottom="20dp"
-    android:inputType="text"/>
 
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Road No"
-        android:id="@+id/road_no"
-        android:layout_marginBottom="20dp"
-        android:inputType="text"/>
-     <EditText
-         android:layout_width="match_parent"
-         android:layout_height="wrap_content"
-         android:hint="Area"
-         android:inputType="text"
-         android:id="@+id/area"
-         android:layout_marginBottom="20dp"/>
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:inputType="number"
-        android:hint="Phone No"
-        android:id="@+id/phone_no"
-        android:layout_marginBottom="20dp"/>
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/email"
-        android:inputType="text"
-        android:hint="Email"
-        android:layout_marginBottom="20dp"/>
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:inputType="text"
-        android:id="@+id/rentfee"
-        android:hint="Rent Price"
-        android:layout_marginBottom="20dp"/>
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:text="Submit"
-        android:id="@+id/submit"/>
-</LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <EditText
+                android:id="@+id/owner_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginRight="10dp"
+                android:background="#e69be0ec"
+                android:hint="Enter House Owner Name"
+                android:paddingTop="10dp"
+                android:paddingBottom="10dp"
+                android:shadowColor="#e69be0ec" />
+
+            <EditText
+                android:id="@+id/house_no"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginBottom="20dp"
+                android:background="#e69be0ec"
+                android:hint="House No."
+                android:inputType="text"
+                android:paddingTop="10dp"
+                android:paddingBottom="10dp"
+                android:shadowColor="#e69be0ec" />
+
+            <EditText
+                android:id="@+id/road_no"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginBottom="20dp"
+                android:background="#e69be0ec"
+                android:hint="Road No"
+                android:inputType="text"
+                android:paddingTop="10dp"
+                android:paddingBottom="10dp"
+                android:shadowColor="#e69be0ec" />
+
+            <EditText
+                android:id="@+id/area"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginBottom="20dp"
+                android:background="#e69be0ec"
+                android:hint="Area"
+                android:inputType="text"
+                android:paddingTop="10dp"
+                android:paddingBottom="10dp"
+                android:shadowColor="#e69be0ec" />
+
+            <EditText
+                android:id="@+id/phone_no"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginBottom="20dp"
+                android:background="#e69be0ec"
+                android:hint="Phone No"
+                android:inputType="number"
+                android:paddingTop="10dp"
+                android:paddingBottom="10dp"
+                android:shadowColor="#e69be0ec" />
+
+            <EditText
+                android:id="@+id/email"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginBottom="20dp"
+                android:background="#e69be0ec"
+                android:hint="Email"
+                android:inputType="text"
+                android:paddingTop="10dp"
+                android:paddingBottom="10dp"
+                android:shadowColor="#e69be0ec" />
+
+            <EditText
+                android:id="@+id/rentfee"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginBottom="20dp"
+                android:background="#e69be0ec"
+                android:hint="Rent Price"
+                android:inputType="text"
+                android:paddingTop="10dp"
+                android:paddingBottom="10dp"
+                android:shadowColor="#e69be0ec" />
+
+            <Button
+                android:id="@+id/submit"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:background="@drawable/buutonshape"
+                android:text="Submit"
+                android:layout_marginBottom="15dp"
+                />
+        </LinearLayout>
     </ScrollView>
 
 
