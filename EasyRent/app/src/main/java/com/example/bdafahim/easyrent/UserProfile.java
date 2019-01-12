@@ -1,5 +1,6 @@
 package com.example.bdafahim.easyrent;
 
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -148,6 +149,16 @@ public class UserProfile extends AppCompatActivity implements NavigationView.OnN
     }
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
+
+        switch (menuItem.getItemId())
+        {
+            case R.id.search:
+                startActivity(new Intent(UserProfile.this,Search_Add.class));
+                break;
+
+            case R.id.logoutuser:
+                break;
+        }
         mDrawer.closeDrawer(GravityCompat.START);
         return true;
     }

@@ -26,7 +26,16 @@
         <activity android:name=".OwnerProfile" />
         <activity android:name=".Post_Add" />
         <activity android:name=".Manage_Post" />
-        <activity android:name=".UpdateDelete"></activity>
+        <activity android:name=".UpdateDelete" />
+        <activity android:name=".Search_Add"></activity>
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="AIzaSyA-ch0iaPEpkOOGkUFIpzRrqoJJ8QvJe0o" />
+
+        <activity
+            android:name=".Search_trial"
+            android:label="Map"
+            android:theme="@style/AppTheme.NoActionBar" ></activity>
     </application>
 
 </manifest>
