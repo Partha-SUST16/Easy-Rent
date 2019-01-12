@@ -18,6 +18,7 @@ import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.CircleOptions;
 import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
@@ -35,6 +36,8 @@ public class Search_trial extends FragmentActivity implements OnMapReadyCallback
     ArrayList<Rent_Add> user_arrayList = new ArrayList<>();
     DatabaseReference mDatabase;
     Button map_button;
+   private String phone,email,owner,type,road;
+   private int fee;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -64,7 +67,14 @@ public class Search_trial extends FragmentActivity implements OnMapReadyCallback
                 List<Address>addressList = null;
 
                 MarkerOptions markerOptions = new MarkerOptions();
+
                 search_location = rent_add.getArea();
+                owner = rent_add.getOwner_name();
+                email = rent_add.getEmail();
+                phone = rent_add.getPhone_no();
+                type = rent_add.getType();
+                fee = rent_add.getFee();
+                road = rent_add.getRoad_no();
                 LatLng test = new LatLng(rent_add.getLati(),rent_add.getLongi());
 
                 try {
@@ -80,11 +90,19 @@ public class Search_trial extends FragmentActivity implements OnMapReadyCallback
 
                             Log.d("Inside Database",latLng.toString());
                             markerOptions.position(latLng);
-                            markerOptions.title(search_location);
+                            markerOptions.title(type);
+                            markerOptions.snippet(Integer.toString(fee));
+
+
+
                             markerOptions.icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_AZURE));
 
-
-                            mMap.addMarker(markerOptions);
+                            CustomInfoWindowGoogleMap customInfoWindow = new CustomInfoWindowGoogleMap(Search_trial.this);
+                            mMap.setInfoWindowAdapter(customInfoWindow);
+                            Marker m = mMap.addMarker(markerOptions);
+                            m.setTag(rent_add);
+                            m.showInfoWindow();
+                            //mMap.addMarker(markerOptions);
 
                         }
 
