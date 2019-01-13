@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">Easy Rent</string>
+    <string name="user_name">Type your Email Address</string>
+    <string name="user_pasword">Enter your Password</string>
+    <string name="signup">New Here??Signup!!</string>
+    <string name="sign_in">Sign In</string>
+    <string name="open">Open</string>
+    <string name="close">Close</string>
+</resources>
