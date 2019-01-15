@@ -1,5 +1,6 @@
 package com.example.bdafahim.easyrent;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
@@ -36,6 +37,8 @@ public class OwnerProfile extends AppCompatActivity implements NavigationView.On
     private DatabaseReference myRef;
     private  String userID;
 
+    private ProgressDialog progressDialog;
+
     private DrawerLayout mDrawer;
     private ActionBarDrawerToggle mToggle;
 
@@ -48,6 +51,7 @@ public class OwnerProfile extends AppCompatActivity implements NavigationView.On
 
         mListView = (ListView) findViewById(R.id.listviewO);
         mDrawer = findViewById(R.id.drawer_owner);
+        progressDialog = new ProgressDialog(this);
 
         //toogle button
         mToggle = new ActionBarDrawerToggle(OwnerProfile.this,mDrawer,R.string.open,R.string.close);
@@ -63,6 +67,9 @@ public class OwnerProfile extends AppCompatActivity implements NavigationView.On
         myRef = mFirebaseDatabase.getReference();
         FirebaseUser user = mAuth.getCurrentUser();
         userID = user.getUid();
+
+        progressDialog.setMessage("Please wait for a moment..");
+        progressDialog.show();
 
         mAuthListener = new FirebaseAuth.AuthStateListener() {
             @Override
@@ -89,11 +96,12 @@ public class OwnerProfile extends AppCompatActivity implements NavigationView.On
                 // whenever data at this location is updated.
                // Toast.makeText(OwnerProfile.this,"Inside Datasnapshot1",Toast.LENGTH_SHORT).show();
                 showData(dataSnapshot);
+                progressDialog.dismiss();
             }
 
             @Override
             public void onCancelled(DatabaseError databaseError) {
-
+                progressDialog.dismiss();
             }
         });
 
@@ -138,7 +146,7 @@ public class OwnerProfile extends AppCompatActivity implements NavigationView.On
 
 
 
-            ArrayAdapter adapter = new ArrayAdapter(this,android.R.layout.simple_list_item_1,array);
+            ArrayAdapter adapter = new ArrayAdapter(this,android.R.layout.simple_expandable_list_item_1,array);
             mListView.setAdapter(adapter);
         }
     }

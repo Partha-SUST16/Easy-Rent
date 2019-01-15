@@ -75,7 +75,7 @@ public class User_Login extends AppCompatActivity {
             return;
         }
 
-        progressDialog.setMessage("Sign up is in progress");
+        progressDialog.setMessage("Login is in progress");
         progressDialog.show();
 
         firebaseAuth.signInWithEmailAndPassword(EmailL,PasswordL)

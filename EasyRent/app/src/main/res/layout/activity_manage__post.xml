@@ -5,7 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".Manage_Post">
+    tools:context=".Manage_Post"
+    android:background="@color/White">
 
     <TextView
         android:layout_width="wrap_content"
