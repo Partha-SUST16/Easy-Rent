@@ -12,7 +12,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".UserCatagory">
+        <activity android:name=".UserCatagory"></activity>
+        <activity android:name=".SplashScreen">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -27,7 +28,8 @@
         <activity android:name=".Post_Add" />
         <activity android:name=".Manage_Post" />
         <activity android:name=".UpdateDelete" />
-        <activity android:name=".Search_Add"></activity>
+        <activity android:name=".Search_Add" />
+
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="AIzaSyA-ch0iaPEpkOOGkUFIpzRrqoJJ8QvJe0o" />
@@ -35,7 +37,7 @@
         <activity
             android:name=".Search_trial"
             android:label="Map"
-            android:theme="@style/AppTheme.NoActionBar" ></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
     </application>
 
 </manifest>

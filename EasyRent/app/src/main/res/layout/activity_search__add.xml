@@ -6,30 +6,23 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context=".Search_Add">
-
     <EditText
-        android:id="@+id/search_text"
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:layout_gravity="center"
         android:paddingTop="15dp"
-        android:hint="Enter place name"
-        android:inputType="text"
-
-        android:paddingBottom="10dp"
-        android:background="#e69be0ec"
-        android:shadowColor="#e69be0ec"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"
-        android:layout_marginBottom="15dp"
-        android:layout_marginTop="10dp"/>
-
+        android:id="@+id/search_text"/>
     <Button
-        android:id="@+id/search_b"
-        android:layout_width="80dp"
-        android:layout_height="50dp"
-        android:layout_gravity="center_horizontal"
-        android:text="search"
-        android:background="@drawable/buutonshape"/>
-
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_gravity="center"
+        android:id="@+id/search_b"/>
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/search_recyclear"
+        android:layout_width = "match_parent"
+        android:layout_height = "wrap_content"
+        />
+    </ScrollView>
 </LinearLayout>

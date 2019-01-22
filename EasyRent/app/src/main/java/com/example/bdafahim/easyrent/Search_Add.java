@@ -35,7 +35,12 @@ public class Search_Add extends AppCompatActivity {
         node = findViewById(R.id.search_text);
         search_btn = findViewById(R.id.search_b);
 
-
+        recyclerView = findViewById(R.id.search_recyclear);
+        addList = new ArrayList<>();
+        recyclerView.setHasFixedSize(true);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        postAdapter = new PostAdapter(this, addList);
+        recyclerView.setAdapter(postAdapter);
         try {
             search_btn.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -77,13 +82,6 @@ public class Search_Add extends AppCompatActivity {
     };
     private void PRE2()
     {
-        if(node.getText().toString().isEmpty())
-        {
-            node.setError("Place can't be empty ");
-            node.requestFocus();
-
-            return;
-        }
         Intent intent = new Intent(Search_Add.this,Search_trial.class);
         intent.putExtra("user_location",node.getText().toString().trim());
         startActivity(intent);

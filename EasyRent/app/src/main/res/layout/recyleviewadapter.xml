@@ -6,20 +6,18 @@
     <android.support.v7.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="8dp">
+        android:layout_margin="3dp">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:background="@color/GhostWhite">
+            android:orientation="vertical">
 
             <TextView
-                android:layout_marginTop="20dp"
+                android:layout_marginTop="50dp"
                 android:textSize="20sp"
                 android:textColor="@color/colorPrimaryDark"
-                android:layout_marginBottom="5dp"
-                android:paddingLeft="5dp"
+                android:layout_marginBottom="20dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/type_id"
@@ -29,9 +27,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textSize="20sp"
-                android:paddingLeft="5dp"
                 android:textColor="@color/colorPrimaryDark"
-                android:layout_marginBottom="5dp"
+                android:layout_marginBottom="20dp"
                 android:id="@+id/rent_feeid"
                 android:layout_gravity="center_horizontal"
                 android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
@@ -39,10 +36,9 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textSize="18sp"
-                android:paddingLeft="5dp"
+                android:textSize="20sp"
                 android:textColor="@color/colorPrimaryDark"
-                android:layout_marginBottom="5dp"
+                android:layout_marginBottom="20dp"
                 android:id="@+id/renter_nameid"
                 android:layout_gravity="center_horizontal"
                 android:text="XYZ"
@@ -51,40 +47,36 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/phone_rentid"
-                android:textSize="18sp"
-                android:paddingLeft="5dp"
+                android:textSize="20sp"
                 android:textColor="@color/colorPrimaryDark"
-                android:layout_marginBottom="5dp"
+                android:layout_marginBottom="20dp"
                 android:layout_gravity="center_horizontal"
                 android:text="01832541824"/>
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/emal_rentid"
-                android:textSize="18sp"
-                android:paddingLeft="5dp"
+                android:textSize="20sp"
                 android:textColor="@color/colorPrimaryDark"
-                android:layout_marginBottom="5dp"
+                android:layout_marginBottom="20dp"
                 android:layout_gravity="center_horizontal"
                 android:text="test@xyz.com"/>
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/rent_areaid"
-                android:textSize="18sp"
-                android:paddingLeft="5dp"
+                android:textSize="20sp"
                 android:textColor="@color/colorPrimaryDark"
-                android:layout_marginBottom="5dp"
+                android:layout_marginBottom="20dp"
                 android:layout_gravity="center_horizontal"
                 android:text="place"/>
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/rent_key"
-                android:textSize="18sp"
-                android:paddingLeft="5dp"
+                android:textSize="20sp"
                 android:textColor="@color/colorPrimaryDark"
-                android:layout_marginBottom="5dp"
+                android:layout_marginBottom="20dp"
                 android:layout_gravity="center_horizontal"
                 android:text="key"/>
 

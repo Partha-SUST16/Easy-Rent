@@ -93,6 +93,8 @@ public class Search_trial extends FragmentActivity implements OnMapReadyCallback
                             markerOptions.title(type);
                             markerOptions.snippet(Integer.toString(fee));
 
+
+
                             markerOptions.icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_AZURE));
 
                             CustomInfoWindowGoogleMap customInfoWindow = new CustomInfoWindowGoogleMap(Search_trial.this);
@@ -106,9 +108,7 @@ public class Search_trial extends FragmentActivity implements OnMapReadyCallback
 
                     }
 
-                }catch (Exception e){
-                    Toast.makeText(Search_trial.this,e.getMessage(),Toast.LENGTH_LONG).show();
-                }
+                }catch (Exception e){}
             }
 
             @Override

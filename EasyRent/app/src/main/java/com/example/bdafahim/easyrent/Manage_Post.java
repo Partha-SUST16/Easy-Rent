@@ -104,7 +104,7 @@ public class Manage_Post extends AppCompatActivity {
             public void onClick(View view, final int position) {
                 //Values are passing to activity & to fragment as well
                 String title1 = ((TextView) recyclerView.findViewHolderForAdapterPosition(position).itemView.findViewById(R.id.rent_key)).getText().toString();
-                Toast.makeText(Manage_Post.this, "Single Click on position :"+position,
+                Toast.makeText(Manage_Post.this, "Single Click on position  :"+title1,
                         Toast.LENGTH_SHORT).show();
             }
 
@@ -114,7 +114,8 @@ public class Manage_Post extends AppCompatActivity {
                 Intent i = new Intent(Manage_Post.this,UpdateDelete.class);
                 i.putExtra("ref",title1);
                 startActivity(i);
-
+                Toast.makeText(Manage_Post.this, "Long press on position :"+position,
+                        Toast.LENGTH_LONG).show();
             }
 
         }));
