@@ -47,7 +47,7 @@ public class User_Login extends AppCompatActivity {
         signup.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(User_Login.this,"signup clicked",Toast.LENGTH_SHORT).show();
+               // Toast.makeText(User_Login.this,"signup clicked",Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent(User_Login.this,SignUp.class);
                 startActivity(intent);
             }
@@ -75,7 +75,7 @@ public class User_Login extends AppCompatActivity {
             return;
         }
 
-        progressDialog.setMessage("Sign up is in progress");
+        progressDialog.setMessage("Login is in progress");
         progressDialog.show();
 
         firebaseAuth.signInWithEmailAndPassword(EmailL,PasswordL)

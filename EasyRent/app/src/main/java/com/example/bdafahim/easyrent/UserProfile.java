@@ -1,5 +1,6 @@
 package com.example.bdafahim.easyrent;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
@@ -39,6 +40,7 @@ public class UserProfile extends AppCompatActivity implements NavigationView.OnN
 
     private DrawerLayout mDrawer;
     private ActionBarDrawerToggle mToggle;
+    private ProgressDialog progressDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,6 +58,8 @@ public class UserProfile extends AppCompatActivity implements NavigationView.OnN
         userID = user.getUid();
 
         mDrawer = findViewById(R.id.drawer_User);
+
+        progressDialog = new ProgressDialog(this);
 
         //toogle button
         mToggle = new ActionBarDrawerToggle(UserProfile.this,mDrawer,R.string.open,R.string.close);
@@ -81,6 +85,9 @@ public class UserProfile extends AppCompatActivity implements NavigationView.OnN
             }
         };
 
+        progressDialog.setMessage("Please wait for a moment ");
+        progressDialog.show();
+
         myRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
@@ -88,11 +95,12 @@ public class UserProfile extends AppCompatActivity implements NavigationView.OnN
                 // whenever data at this location is updated.
                // Toast.makeText(UserProfile.this,"Inside Datasnapshot1",Toast.LENGTH_SHORT).show();
                 showData(dataSnapshot);
+                progressDialog.dismiss();
             }
 
             @Override
             public void onCancelled(DatabaseError databaseError) {
-
+                progressDialog.dismiss();
             }
         });
 
@@ -115,11 +123,11 @@ public class UserProfile extends AppCompatActivity implements NavigationView.OnN
             Log.d(TAG,"showData: address: "+uinfo.getUaddress());
 
             ArrayList<String>array = new ArrayList<>();
-            array.add(uinfo.getUName());
-            array.add(uinfo.getUemail());
-            array.add(uinfo.getUphoneNo());
-            array.add(uinfo.getUaddress());
-            ArrayAdapter adapter = new ArrayAdapter(this,android.R.layout.simple_list_item_1,array);
+            array.add("Name : "+uinfo.getUName());
+            array.add("Email : "+uinfo.getUemail());
+            array.add("PhoneNo : "+uinfo.getUphoneNo());
+            array.add("Address : "+uinfo.getUaddress());
+            ArrayAdapter adapter = new ArrayAdapter(this,android.R.layout.simple_expandable_list_item_1,array);
             mListView.setAdapter(adapter);
         }
     }
@@ -157,6 +165,8 @@ public class UserProfile extends AppCompatActivity implements NavigationView.OnN
                 break;
 
             case R.id.logoutuser:
+                FirebaseAuth.getInstance().signOut();
+                startActivity(new Intent(UserProfile.this,UserCatagory.class));
                 break;
         }
         mDrawer.closeDrawer(GravityCompat.START);

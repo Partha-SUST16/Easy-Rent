@@ -86,28 +86,76 @@ public class Post_Add extends AppCompatActivity  {
 
     void POST_PROCESS(){
 
-            String house_no, road_no, address, phone_no, email_no,ownername;
-            int rentfee;
-            progressDialog.setMessage("Posting in process...");
-            progressDialog.show();
+        String house_no, road_no, address, phone_no, email_no,ownername;
+        int rentfee;
+        String type;
+        progressDialog.setMessage("Posting in process...");
+
+
+        try {
             address = addresstxt.getText().toString();
             phone_no = phonetxt.getText().toString();
             email_no = emailtxt.getText().toString();
             house_no = housetxt.getText().toString();
             road_no = roadtxt.getText().toString();
             ownername = nametxt.getText().toString();
-            rentfee = Integer.parseInt(rentxt.getText().toString());
-
             int selected = radioGroup.getCheckedRadioButtonId();
-            RadioButton rb =(RadioButton) findViewById(selected);
+            RadioButton rb = (RadioButton) findViewById(selected);
 
-            String type = rb.getText().toString();
-            String key= mFirebaseDatabase.getReference("Users")
-                    .child(mAuth.getCurrentUser().getUid())
-                    .child("Posts").push().getKey();;
-            rent_add = new Rent_Add(house_no,ownername,road_no,address,phone_no,email_no,type,rentfee,lati,longi,key);
+            type = rb.getText().toString();
+            if (address.isEmpty()) {
+                addresstxt.setError("Fill the form correctly.");
+                addresstxt.requestFocus();
+                return;
+            }
+            if (phone_no.isEmpty()) {
+                phonetxt.setError("Fill the form correctly.");
+                phonetxt.requestFocus();
+                return;
+            }
+            if (email_no.isEmpty()) {
+                emailtxt.setError("Fill the form correctly.");
+                emailtxt.requestFocus();
+                return;
+            }
+            if (house_no.isEmpty()) {
+                housetxt.setError("Fill the form correctly.");
+                housetxt.requestFocus();
+                return;
+            }
+            if (ownername.isEmpty()) {
+                nametxt.setError("Fill the form correctly.");
+                nametxt.requestFocus();
+                return;
+            }
+            if (road_no.isEmpty()) {
+                roadtxt.setError("Fill the form correctly.");
+                roadtxt.requestFocus();
+                return;
+            }
+            if (type.isEmpty()) {
+                Toast.makeText(Post_Add.this, "Select Catagory First", Toast.LENGTH_LONG).show();
+                return;
+            }
+            if (rentxt.getText().toString().isEmpty()) {
+                rentxt.setError("Fill the form correctly.");
+                rentxt.requestFocus();
+                return;
+            }
+            rentfee = Integer.parseInt(rentxt.getText().toString());
+        }catch (Exception e)
+        {
+            Toast.makeText(Post_Add.this,"Fill form correctly",Toast.LENGTH_LONG).show();
+            return;
+        }
+        progressDialog.show();
 
-    try{
+        String key= mFirebaseDatabase.getReference("Users")
+                .child(mAuth.getCurrentUser().getUid())
+                .child("Posts").push().getKey();;
+        rent_add = new Rent_Add(house_no,ownername,road_no,address,phone_no,email_no,type,rentfee,lati,longi,key);
+
+        try{
 
             mFirebaseDatabase.getReference("Users")
                     .child(mAuth.getCurrentUser().getUid())
@@ -118,7 +166,7 @@ public class Post_Add extends AppCompatActivity  {
                     if (task.isSuccessful()) {
                         progressDialog.dismiss();
                         //Toast.makeText(Post_Add.this, "Posting Successful", Toast.LENGTH_LONG).show();
-                       // finish();
+                        // finish();
                     } else {
                         progressDialog.dismiss();
                         //display a failure message
@@ -127,9 +175,9 @@ public class Post_Add extends AppCompatActivity  {
                 }
             });
             POST_PROCESS2(key,rent_add);
-    }catch (Exception e){
-        Toast.makeText(Post_Add.this,e.getMessage().toString(),Toast.LENGTH_LONG).show();
-    }
+        }catch (Exception e){
+            Toast.makeText(Post_Add.this,e.getMessage().toString(),Toast.LENGTH_LONG).show();
+        }
 
 
     }

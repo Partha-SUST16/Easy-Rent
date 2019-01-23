@@ -108,7 +108,9 @@ public class Search_trial extends FragmentActivity implements OnMapReadyCallback
 
                     }
 
-                }catch (Exception e){}
+                }catch (Exception e){
+                    Toast.makeText(Search_trial.this,e.getMessage(),Toast.LENGTH_LONG).show();
+                }
             }
 
             @Override

@@ -6,15 +6,47 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context=".Search_Add">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Select the Area"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="60dp"
+        android:textStyle="bold"
+        android:textSize="30sp"
+        android:textColor="@color/colorPrimaryDark"
+        android:layout_marginBottom="50dp"
+
+        />
+
     <EditText
+        android:layout_marginRight="10dp"
+        android:layout_marginLeft="10dp"
         android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:paddingTop="15dp"
+        android:layout_height="wrap_content"
+        android:inputType="text"
+        android:background="#e69be0ec"
+        android:shadowColor="#e69be0ec"
+        android:hint="Type Area Name"
+        android:paddingTop="20dp"
+        android:paddingBottom="20dp"
+        android:layout_marginBottom="20dp"
         android:id="@+id/search_text"/>
     <Button
-        android:layout_width="30dp"
-        android:layout_height="30dp"
-        android:layout_gravity="center"
+        android:layout_gravity="center_horizontal"
+        android:layout_width="100dp"
+        android:layout_height="50dp"
+        android:textSize="20sp"
+        android:textColor="#FFFFFF"
+        android:shadowColor="#A8A8A8"
+        android:shadowRadius="5"
+        android:shadowDx="0"
+        android:shadowDy="0"
+        android:textStyle="bold"
+        android:text="Search"
+        android:background="@drawable/buutonshape"
+        android:layout_marginTop="20dp"
         android:id="@+id/search_b"/>
     <ScrollView
         android:layout_width="match_parent"

@@ -1,5 +1,6 @@
 package com.example.bdafahim.easyrent;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
@@ -41,6 +42,9 @@ public class OwnerProfile extends AppCompatActivity implements NavigationView.On
 
     private ListView mListView;
 
+    private ProgressDialog progressDialog;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -64,6 +68,8 @@ public class OwnerProfile extends AppCompatActivity implements NavigationView.On
         FirebaseUser user = mAuth.getCurrentUser();
         userID = user.getUid();
 
+        progressDialog = new ProgressDialog(this);
+
         mAuthListener = new FirebaseAuth.AuthStateListener() {
             @Override
             public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
@@ -81,6 +87,8 @@ public class OwnerProfile extends AppCompatActivity implements NavigationView.On
             }
         };
 
+        progressDialog.setMessage("Please wait for a moment..");
+        progressDialog.show();
 
         myRef.addValueEventListener(new ValueEventListener() {
             @Override
@@ -89,11 +97,12 @@ public class OwnerProfile extends AppCompatActivity implements NavigationView.On
                 // whenever data at this location is updated.
                // Toast.makeText(OwnerProfile.this,"Inside Datasnapshot1",Toast.LENGTH_SHORT).show();
                 showData(dataSnapshot);
+                progressDialog.dismiss();
             }
 
             @Override
             public void onCancelled(DatabaseError databaseError) {
-
+                progressDialog.dismiss();
             }
         });
 
@@ -138,7 +147,7 @@ public class OwnerProfile extends AppCompatActivity implements NavigationView.On
 
 
 
-            ArrayAdapter adapter = new ArrayAdapter(this,android.R.layout.simple_list_item_1,array);
+            ArrayAdapter adapter = new ArrayAdapter(this,android.R.layout.simple_expandable_list_item_1,array);
             mListView.setAdapter(adapter);
         }
     }

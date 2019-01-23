@@ -43,7 +43,7 @@ public class Owner_Login extends AppCompatActivity  {
         login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(Owner_Login.this,"Login Pressed",Toast.LENGTH_SHORT).show();
+                //Toast.makeText(Owner_Login.this,"Login Pressed",Toast.LENGTH_SHORT).show();
                 LOGIN_PROCESS();
             }
         });
@@ -53,7 +53,7 @@ public class Owner_Login extends AppCompatActivity  {
             public void onClick(View view) {
                 Intent intent = new Intent(Owner_Login.this,SignUp.class);
                 startActivity(intent);
-                Toast.makeText(Owner_Login.this,"Signup Clicked",Toast.LENGTH_SHORT).show();
+               // Toast.makeText(Owner_Login.this,"Signup Clicked",Toast.LENGTH_SHORT).show();
             }
         });
 

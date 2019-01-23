@@ -82,6 +82,13 @@ public class Search_Add extends AppCompatActivity {
     };
     private void PRE2()
     {
+        if(node.getText().toString().isEmpty())
+        {
+            node.setError("Place can't be empty ");
+            node.requestFocus();
+
+            return;
+        }
         Intent intent = new Intent(Search_Add.this,Search_trial.class);
         intent.putExtra("user_location",node.getText().toString().trim());
         startActivity(intent);
