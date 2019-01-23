@@ -18,7 +18,7 @@
         android:textAlignment="center"
         android:textSize="25sp"
         android:text="UserInformation"
-        android:textColor="@color/colorPrimaryDark"
+        android:textColor="@color/grey"
         android:textStyle="bold"
         android:id="@+id/tvUserInfo"
 

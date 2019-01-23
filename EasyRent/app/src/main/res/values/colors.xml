@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#1a9de2</color>
-    <color name="colorPrimaryDark">#e60c8fed</color>
+    <color name="colorPrimary">#B40A0A</color>
+    <color name="colorPrimaryDark">#A71111</color>
     <color name="colorAccent">#FF4081</color>
-
+    <color name="Black">#070007</color>
     <color name="White">#E0B4B4</color>
     <color name="Ivory">#FFFFF0</color>
     <color name="LightYellow">#FFFFE0</color>
@@ -14,6 +14,7 @@
     <color name="Cornsilk">#FFF8DC</color>
     <color name="Seashell">#FFF5EE</color>
     <color name="LavenderBlush">#FFF0F5</color>
+    <color name="swhite">#EBEBEB</color>
     <color name="PapayaWhip">#FFEFD5</color>
     <color name="BlanchedAlmond">#FFEBCD</color>
     <color name="MistyRose">#FFE4E1</color>
@@ -21,6 +22,8 @@
     <color name="Moccasin">#FFE4B5</color>
     <color name="NavajoWhite">#FFDEAD</color>
     <color name="PeachPuff">#FFDAB9</color>
+    <color name="lgrey">#EBEBEB</color>
+    <color name="grey">#9B9B9B</color>
     <color name="Gold">#FFD700</color>
     <color name="Pink">#FFC0CB</color>
     <color name="LightPink">#FFB6C1</color>

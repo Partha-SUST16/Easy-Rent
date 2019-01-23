@@ -12,7 +12,7 @@
     android:textStyle="bold"
     android:textAlignment="center"
     android:text="Post for RENT"
-    android:textColor="@color/colorPrimaryDark"
+    android:textColor="@color/grey"
     android:textSize="30sp"
     android:padding="15dp"
     />
@@ -27,13 +27,13 @@
         android:layout_height="wrap_content"
         android:text="Single Seat"
         android:textStyle="italic"
-        android:textColor="@color/colorPrimaryDark"
+        android:textColor="@color/grey"
         android:id="@+id/single_seat"
         />
     <RadioButton
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textColor="@color/colorPrimaryDark"
+        android:textColor="@color/grey"
         android:textStyle="italic"
         android:text="Full Flat"
         android:id="@+id/full_flat"/>
@@ -56,11 +56,11 @@
                 android:layout_marginLeft="10dp"
                 android:layout_marginTop="20dp"
                 android:layout_marginRight="10dp"
-                android:background="#e69be0ec"
+                android:background="@color/lgrey"
                 android:hint="Enter House Owner Name"
                 android:paddingTop="10dp"
                 android:paddingBottom="10dp"
-                android:shadowColor="#e69be0ec" />
+                android:shadowColor="@color/lgrey" />
 
             <EditText
                 android:id="@+id/house_no"
@@ -70,12 +70,12 @@
                 android:layout_marginTop="20dp"
                 android:layout_marginRight="10dp"
                 android:layout_marginBottom="20dp"
-                android:background="#e69be0ec"
+                android:background="@color/lgrey"
                 android:hint="House No."
                 android:inputType="text"
                 android:paddingTop="10dp"
                 android:paddingBottom="10dp"
-                android:shadowColor="#e69be0ec" />
+                android:shadowColor="@color/lgrey" />
 
             <EditText
                 android:id="@+id/road_no"
@@ -84,12 +84,12 @@
                 android:layout_marginLeft="10dp"
                 android:layout_marginRight="10dp"
                 android:layout_marginBottom="20dp"
-                android:background="#e69be0ec"
+                android:background="@color/lgrey"
                 android:hint="Road No"
                 android:inputType="text"
                 android:paddingTop="10dp"
                 android:paddingBottom="10dp"
-                android:shadowColor="#e69be0ec" />
+                android:shadowColor="@color/lgrey" />
 
             <EditText
                 android:id="@+id/area"
@@ -98,12 +98,12 @@
                 android:layout_marginLeft="10dp"
                 android:layout_marginRight="10dp"
                 android:layout_marginBottom="20dp"
-                android:background="#e69be0ec"
+                android:background="@color/lgrey"
                 android:hint="Area"
                 android:inputType="text"
                 android:paddingTop="10dp"
                 android:paddingBottom="10dp"
-                android:shadowColor="#e69be0ec" />
+                android:shadowColor="@color/lgrey" />
 
             <EditText
                 android:id="@+id/phone_no"
@@ -112,12 +112,12 @@
                 android:layout_marginLeft="10dp"
                 android:layout_marginRight="10dp"
                 android:layout_marginBottom="20dp"
-                android:background="#e69be0ec"
+                android:background="@color/lgrey"
                 android:hint="Phone No"
                 android:inputType="number"
                 android:paddingTop="10dp"
                 android:paddingBottom="10dp"
-                android:shadowColor="#e69be0ec" />
+                android:shadowColor="@color/lgrey" />
 
             <EditText
                 android:id="@+id/email"
@@ -126,12 +126,12 @@
                 android:layout_marginLeft="10dp"
                 android:layout_marginRight="10dp"
                 android:layout_marginBottom="20dp"
-                android:background="#e69be0ec"
+                android:background="@color/lgrey"
                 android:hint="Email"
                 android:inputType="text"
                 android:paddingTop="10dp"
                 android:paddingBottom="10dp"
-                android:shadowColor="#e69be0ec" />
+                android:shadowColor="@color/lgrey" />
 
             <EditText
                 android:id="@+id/rentfee"
@@ -140,17 +140,17 @@
                 android:layout_marginLeft="10dp"
                 android:layout_marginRight="10dp"
                 android:layout_marginBottom="20dp"
-                android:background="#e69be0ec"
+                android:background="@color/lgrey"
                 android:hint="Rent Price"
                 android:inputType="text"
                 android:paddingTop="10dp"
                 android:paddingBottom="10dp"
-                android:shadowColor="#e69be0ec" />
+                android:shadowColor="@color/lgrey" />
 
             <Button
                 android:id="@+id/submit"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="150dp"
+                android:layout_height="50dp"
                 android:layout_gravity="center"
                 android:background="@drawable/buutonshape"
                 android:text="Submit"
