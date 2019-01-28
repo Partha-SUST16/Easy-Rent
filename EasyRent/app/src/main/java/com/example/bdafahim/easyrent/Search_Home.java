@@ -40,20 +40,18 @@ public class Search_Home extends FragmentActivity implements OnMapReadyCallback 
     private ImageButton imageButton;
 
     private GoogleMap mMap,uMap;
-    Address hostAddress;
+    private Address hostAddress;
     private EditText search_radius,search_type;
-    ArrayList<Rent_Add> user_arrayList = new ArrayList<>();
+
     List<Address> distances = new ArrayList<>();
     LatLng t_latLng;
 
     DatabaseReference mDatabase;
-    Button map_button;
-    private String phone,email,owner,road;
-    private int fee;
+
 
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState) throws NullPointerException {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_search__home);
 
@@ -81,7 +79,7 @@ public class Search_Home extends FragmentActivity implements OnMapReadyCallback 
                 CircleOptions circleOptions = new CircleOptions();
                 MarkerOptions markerOptions = new MarkerOptions();
 
-                //getting radius from searchbox
+                //getting radius from search_box
                 radius = search_radius.getText().toString().trim();
                 if(radius.isEmpty())
                     radius = "10";
@@ -89,19 +87,20 @@ public class Search_Home extends FragmentActivity implements OnMapReadyCallback 
                 mMap.clear();
                 //arrayList.removeAll(arrayList);
 
+                try {
+                    //adding marker to searched place
+                   /* markerOptions.position(t_latLng);
+                    markerOptions.title(user_location);
+                    markerOptions.icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_RED));
+                    mMap.addMarker(markerOptions);*/
 
-                //adding marker to searched place
-                markerOptions.position(t_latLng);
-                markerOptions.title(user_location);
-                markerOptions.icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_RED));
-                mMap.addMarker(markerOptions);
-
-                //creating circle around search place
-                circleOptions.center(t_latLng);
-                circleOptions.radius(Integer.valueOf(radius)*1000);
-                circleOptions.strokeColor(Color.CYAN);
-                circleOptions.fillColor(0x4D000080);
-                mMap.addCircle(circleOptions);
+                    //creating circle around search place
+                    circleOptions.center(t_latLng);
+                    circleOptions.radius(Integer.valueOf(radius) * 1000);
+                    circleOptions.strokeColor(Color.CYAN);
+                    circleOptions.fillColor(0x4D000080);
+                    uMap.addCircle(circleOptions);
+                }catch (Exception e){}
 
 
                 type = search_type.getText().toString();
@@ -119,6 +118,7 @@ public class Search_Home extends FragmentActivity implements OnMapReadyCallback 
                     public void onChildAdded(DataSnapshot dataSnapshot, String s) {
                         Rent_Add rent_add = dataSnapshot.getValue(Rent_Add.class);
 
+                        //debugging
                         Log.d("Testing ",rent_add.getArea());
                         Log.d("Testing ",rent_add.getType());
                         Log.d("Testing ",type);
@@ -127,7 +127,8 @@ public class Search_Home extends FragmentActivity implements OnMapReadyCallback 
                         Geocoder geocoder = new Geocoder(Search_Home.this);
                         List<Address>addressList = null;
                         MarkerOptions markerOptions = new MarkerOptions();
-                       // assert rent_add!=null;
+                        //checking if rent_add object is equal to null
+                        assert rent_add!=null;
                         location = rent_add.getArea();
                         if(rent_add.getType().equalsIgnoreCase(type)){
                             try {
@@ -139,11 +140,14 @@ public class Search_Home extends FragmentActivity implements OnMapReadyCallback 
 
                                         LatLng latLng = new LatLng(userAddress.getLatitude(), userAddress.getLongitude());
 
+                                        //getting distance between two place
                                         distances.add(addressList.get(0));
                                         float results[] = new float[100];
                                         Location.distanceBetween(userAddress.getLatitude(), userAddress.getLongitude(), hostAddress.getLatitude(), hostAddress.getLongitude(), results);
+
                                         Log.d("Testing ",Float.toString(results[0]));
                                         Log.d("Testing ",Float.toString(results[0]));
+                                        //convert result into kilometer
                                         if (results[0] / 1000 <= Float.valueOf(radius)){
                                             markerOptions.position(latLng);
                                             markerOptions.title(rent_add.getType());
@@ -192,6 +196,15 @@ public class Search_Home extends FragmentActivity implements OnMapReadyCallback 
 
     }
 
+    /**
+     * Manipulates the map once available.
+     * This callback is triggered when the map is ready to be used.
+     * This is where we can add markers or lines, add listeners or move the camera. In this case,
+     * we just add a marker near Sydney, Australia.
+     * If Google Play services is not installed on the device, the user will be prompted to install
+     * it inside the SupportMapFragment. This method will only be triggered once the user has
+     * installed Google Play services and returned to the app.
+     */
     @Override
     public void onMapReady(GoogleMap googleMap) {
         Geocoder geocoder = new Geocoder(Search_Home.this);
@@ -199,6 +212,7 @@ public class Search_Home extends FragmentActivity implements OnMapReadyCallback 
         MarkerOptions markerOptions = new MarkerOptions();
 
     mMap = googleMap;
+    uMap = googleMap;
         try{
             addressList = geocoder.getFromLocationName(user_location,10);
 
@@ -211,13 +225,15 @@ public class Search_Home extends FragmentActivity implements OnMapReadyCallback 
 
                     t_latLng = new LatLng(hostAddress.getLatitude(),hostAddress.getLongitude());
 
+                    //adding marker to searched place
+
                     markerOptions.position(t_latLng);
                     markerOptions.title(user_location);
                     markerOptions.icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_RED));
 
 
-                    mMap.addMarker(markerOptions);
-                    mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(t_latLng,10));
+                    uMap.addMarker(markerOptions);
+                    uMap.moveCamera(CameraUpdateFactory.newLatLngZoom(t_latLng,10));
 
                 }
 

@@ -89,7 +89,7 @@ public class Search_Add extends AppCompatActivity {
 
             return;
         }
-        Intent intent = new Intent(Search_Add.this,Search_trial.class);
+        Intent intent = new Intent(Search_Add.this,Search_Home.class);
         intent.putExtra("user_location",node.getText().toString().trim());
         startActivity(intent);
     }

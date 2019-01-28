@@ -90,8 +90,8 @@ public class Search_trial extends FragmentActivity implements OnMapReadyCallback
 
                             Log.d("Inside Database",latLng.toString());
                             markerOptions.position(latLng);
-                            markerOptions.title(type);
-                            markerOptions.snippet(Integer.toString(fee));
+                            markerOptions.title(rent_add.getType());
+                            markerOptions.snippet(Integer.toString(rent_add.getFee()));
 
 
 
