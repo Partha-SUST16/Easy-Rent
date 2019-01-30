@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".register">
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:background="#868aa1"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:padding="@dimen/activity_horizontal_margin">
+
+
+        <ImageView
+            android:id="@+id/registerImage"
+            android:layout_width="@dimen/logo_w_h"
+            android:layout_height="@dimen/logo_w_h"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginBottom="30dp"
+            android:src="@mipmap/user"
+            android:contentDescription=""
+            tools:ignore="ContentDescription"
+        />
+
+
+        <EditText
+            android:id="@+id/registername"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Name *"
+            android:textSize="20dp"
+            android:inputType="textEmailAddress"
+            android:maxLines="1"
+            android:background="@drawable/edit_round_button"
+            android:drawableLeft="@drawable/name_register"
+            android:padding="5dp"
+            android:drawablePadding="15dp"/>
+           <!-- android:background="@drawable/edit_round_button"
+            android:drawableLeft="@drawable/name_register"
+            android:padding="5dp"
+            android:drawablePadding="15dp"-->
+
+
+
+        <EditText
+            android:layout_marginTop="5dp"
+            android:id="@+id/registerAddress"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Address (Location) *"
+            android:inputType="textEmailAddress"
+            android:maxLines="1"
+            android:textSize="20dp"
+            android:background="@drawable/edit_round_button"
+            android:drawableLeft="@drawable/address_register"
+            android:padding="5dp"
+            android:drawablePadding="15dp"/>
+            <!--android:background="@drawable/edit_round_button"
+            android:drawableLeft="@drawable/address_register"
+            android:padding="5dp"
+            android:drawablePadding="15dp"-->
+
+
+        <EditText
+            android:layout_marginTop="5dp"
+            android:id="@+id/registerPhoneNo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Phone No"
+            android:inputType="textEmailAddress"
+            android:maxLines="1"
+            android:background="@drawable/edit_round_button"
+            android:drawableLeft="@drawable/phone_register"
+            android:padding="5dp"
+            android:drawablePadding="15dp"/>
+            <!--android:background="@drawable/edit_round_button"
+            android:drawableLeft="@drawable/phone_register"
+            android:padding="5dp"
+            android:drawablePadding="15dp"-->
+
+
+        <EditText
+            android:layout_marginTop="5dp"
+            android:id="@+id/registermail"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Enter your mail"
+            android:inputType="textEmailAddress"
+            android:maxLines="1"
+            android:background="@drawable/edit_round_button"
+            android:drawableLeft="@drawable/username_register"
+            android:padding="5dp"
+            android:drawablePadding="15dp"/>
+           <!-- android:background="@drawable/edit_round_button"
+            android:drawableLeft="@drawable/username_register"
+            android:padding="5dp"
+            android:drawablePadding="15dp"-->
+
+
+
+        <EditText
+            android:layout_marginTop="5dp"
+            android:id="@+id/registerpassword"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:focusableInTouchMode="true"
+            android:hint="Password"
+            android:imeOptions="actionUnspecified"
+            android:inputType="textPassword"
+            android:maxLines="1"
+            android:background="@drawable/edit_round_button"
+            android:drawableLeft="@drawable/key"
+            android:padding="5dp"
+            android:drawablePadding="15dp"/>
+           <!--
+            android:drawableLeft="@drawable/key"
+            android:padding="5dp"
+            android:drawablePadding="15dp"-->
+
+
+
+        <Button
+            android:id="@+id/registersign_up_button"
+            style="?android:textAppearanceSmall"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:layout_marginRight="40dp"
+            android:layout_marginLeft="40dp"
+            android:text="Sign UP"
+            android:textColor="@android:color/black"
+            android:textStyle="bold"
+            android:background="@drawable/rounded_button"/>
+           <!-- android:background="@drawable/rounded_button"-->
+
+
+
+
+        <!-- Link to Login Screen -->
+
+
+    </LinearLayout>
+
+</android.support.constraint.ConstraintLayout>

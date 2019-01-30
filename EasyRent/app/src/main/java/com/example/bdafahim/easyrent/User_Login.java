@@ -6,6 +6,7 @@ import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -18,6 +19,10 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 
 public class User_Login extends AppCompatActivity {
+
+
+    private GpsTracker gpsTracker;
+    private double lati,longi;
 
     private Button login,signup;
     private EditText emailText,passwordText;
@@ -40,6 +45,7 @@ public class User_Login extends AppCompatActivity {
         login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                getLocation(view);
                 LOGIN_PROCESS();
             }
         });
@@ -48,7 +54,7 @@ public class User_Login extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                // Toast.makeText(User_Login.this,"signup clicked",Toast.LENGTH_SHORT).show();
-                Intent intent = new Intent(User_Login.this,SignUp.class);
+                Intent intent = new Intent(User_Login.this,register.class);
                 startActivity(intent);
             }
         });
@@ -58,6 +64,7 @@ public class User_Login extends AppCompatActivity {
     }
 
     void LOGIN_PROCESS(){
+
 
         String EmailL = emailText.getText().toString().trim();
         String PasswordL = passwordText.getText().toString().trim();
@@ -88,7 +95,11 @@ public class User_Login extends AppCompatActivity {
                             progressDialog.dismiss();
                             Toast.makeText(User_Login.this,"User Login Successful",Toast.LENGTH_SHORT)
                                     .show();
-                            startActivity(new Intent(getApplicationContext(),UserProfile.class));
+                            Intent i = new Intent(getApplicationContext(),profile_user2.class);
+
+                            i.putExtra("Lati",Double.toString(lati));
+                            i.putExtra("Longi",Double.toString(longi));
+                            startActivity(i);
                         } else {
                             progressDialog.dismiss();
                             Toast.makeText(User_Login.this,task.getException().getMessage(),Toast.LENGTH_LONG)
@@ -103,4 +114,15 @@ public class User_Login extends AppCompatActivity {
         finish();
         return true;
     }*/
+
+    public void getLocation(View view){
+        gpsTracker = new GpsTracker(User_Login.this);
+        if(gpsTracker.canGetLocation()){
+            lati = gpsTracker.getLatitude();
+            longi= gpsTracker.getLongitude();
+
+        }else{
+            gpsTracker.showSettingsAlert();
+        }
+    }
 }

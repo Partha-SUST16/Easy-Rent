@@ -96,7 +96,7 @@ public class UpdateDelete extends AppCompatActivity {
             @Override
             public void onDataChange(DataSnapshot ds) {
 
-                    //uinfo.setUName(ds.child(userID).getValue(User_Information.class).getUName());
+
                     Rent_Add rent_add = new Rent_Add();
                     email.setText(ds.getValue(Rent_Add.class).getEmail());
                     owner.setText(ds.getValue(Rent_Add.class).getOwner_name());

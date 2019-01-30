@@ -110,8 +110,8 @@ public class SignUp extends AppCompatActivity
                             progressDialog.dismiss();
 
                             User_Info user = new User_Info(
-                                    name,address,
-                                    phone,email
+                                    /*name,address,
+                                    phone,email*/
                             );
 
                             FirebaseDatabase.getInstance().getReference("Users")

@@ -38,9 +38,15 @@
             android:name=".Search_trial"
             android:label="Map"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".Search_Home"
+        <activity
+            android:name=".Search_Home"
             android:label="Map"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".register" />
+        <activity android:name=".profile_user" />
+        <activity android:name=".profile_user2" />
+        <activity android:name=".profile_update" />
+        <activity android:name=".Map_activity"></activity>
     </application>
 
 </manifest>

@@ -110,20 +110,23 @@ public class UserProfile extends AppCompatActivity implements NavigationView.OnN
         for(DataSnapshot ds : dataSnapshot.getChildren()){
           //  Toast.makeText(UserProfile.this,"Inside Datasnapshot 2",Toast.LENGTH_SHORT).show();
 
-            User_Information uinfo = new User_Information();
-            uinfo.setUName(ds.child(userID).getValue(User_Information.class).getUName());
-            uinfo.setUemail(ds.child(userID).getValue(User_Information.class).getUemail());
-            uinfo.setUphoneNo(ds.child(userID).getValue(User_Information.class).getUphoneNo());
-            uinfo.setUaddress(ds.child(userID).getValue(User_Information.class).getUaddress());
+            User_Info uinfo = new User_Info();
+            Rent_Add rent = new Rent_Add();
+
+
+            uinfo.setUname(ds.child(userID).getValue(User_Info.class).getUname());
+            uinfo.setUemail(ds.child(userID).getValue(User_Info.class).getUemail());
+            uinfo.setUphoneNo(ds.child(userID).getValue(User_Info.class).getUphoneNo());
+            uinfo.setUaddress(ds.child(userID).getValue(User_Info.class).getUaddress());
 
             //display all the information
-            Log.d(TAG, "showData: name: " + uinfo.getUName());
+            Log.d(TAG, "showData: name: " + uinfo.getUname());
             Log.d(TAG, "showData: email: " + uinfo.getUemail());
             Log.d(TAG, "showData: phone_num: " + uinfo.getUphoneNo());
             Log.d(TAG,"showData: address: "+uinfo.getUaddress());
 
             ArrayList<String>array = new ArrayList<>();
-            array.add("Name : "+uinfo.getUName());
+            array.add("Name : "+uinfo.getUname());
             array.add("Email : "+uinfo.getUemail());
             array.add("PhoneNo : "+uinfo.getUphoneNo());
             array.add("Address : "+uinfo.getUaddress());

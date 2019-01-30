@@ -51,7 +51,7 @@ public class Owner_Login extends AppCompatActivity  {
         signup.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(Owner_Login.this,SignUp.class);
+                Intent intent = new Intent(Owner_Login.this,register.class);
                 startActivity(intent);
                // Toast.makeText(Owner_Login.this,"Signup Clicked",Toast.LENGTH_SHORT).show();
             }
@@ -90,7 +90,7 @@ public class Owner_Login extends AppCompatActivity  {
                             progressDialog.dismiss();
                             Toast.makeText(Owner_Login.this,"User Login Successful",Toast.LENGTH_SHORT)
                                     .show();
-                            startActivity(new Intent(getApplicationContext(),OwnerProfile.class));
+                            startActivity(new Intent(getApplicationContext(),profile_user.class));
                         } else {
                             progressDialog.dismiss();
                             Toast.makeText(Owner_Login.this,task.getException().getMessage(),Toast.LENGTH_LONG)
