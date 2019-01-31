@@ -16,7 +16,6 @@
         <ImageView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-
             android:src="@drawable/logo"/>
         <EditText
             android:layout_marginTop="10dp"
@@ -29,6 +28,7 @@
             android:shadowColor="@color/lgrey"
             android:hint="@string/user_name"
             android:id="@+id/user_email"
+            android:drawableLeft="@drawable/name_register"
             android:paddingTop="10dp"
             android:paddingBottom="10dp"
             android:layout_marginBottom="20dp"
@@ -47,6 +47,7 @@
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
             android:hint="@string/user_pasword"
+            android:drawableLeft="@drawable/key"
             android:layout_marginTop="10dp"/>
         <Button
             android:layout_width="150dp"

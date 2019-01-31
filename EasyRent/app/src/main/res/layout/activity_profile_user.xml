@@ -104,7 +104,7 @@
             android:layout_alignParentBottom="true"
             android:layout_marginRight="5dp"
             android:layout_marginBottom="5dp"
-            rfab:rfab_color_normal="#37474f"
+            rfab:rfab_color_normal="#00bfff"
             rfab:rfab_color_pressed="#263238"
             rfab:rfab_drawable="@drawable/circle_ba"
             rfab:rfab_shadow_color="#999999"
