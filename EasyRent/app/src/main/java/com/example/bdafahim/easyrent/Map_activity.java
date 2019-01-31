@@ -37,7 +37,7 @@ import java.util.List;
 public class Map_activity extends AppCompatActivity implements OnMapReadyCallback, AdapterView.OnItemSelectedListener {
 
     private double lati,longi;
-    private String Lat,Lone,area,type,radius,location;
+    private String Lat,Lone,area,type,radius,location,test;
 
     private EditText harea,hardius,htype;
     private ImageButton search;
@@ -60,8 +60,8 @@ public class Map_activity extends AppCompatActivity implements OnMapReadyCallbac
 
         hardius = findViewById(R.id.radias);
         harea = findViewById(R.id.house_area);
-        htype  = findViewById(R.id.house_type);
         search = findViewById(R.id.search_id);
+        type="";
 
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
@@ -90,7 +90,6 @@ public class Map_activity extends AppCompatActivity implements OnMapReadyCallbac
 
     private void work(){
         area = harea.getText().toString().trim();
-        type = htype.getText().toString().trim();
         radius = hardius.getText().toString().trim();
 
         if(area.isEmpty()){
@@ -98,15 +97,8 @@ public class Map_activity extends AppCompatActivity implements OnMapReadyCallbac
             harea.requestFocus();
             return;
         }
-        if(type.isEmpty())
-            type = "Single Seat";
-        char c = type.charAt(0);
-        if(c=='S' || c=='s')
-            type = "Single Seat";
-        else if(c=='F' || c=='f')
-            type = "Full Flat";
-        else
-            type = "Single Seat";
+        if(test.isEmpty())
+            test = "Single Seat";
         radius = hardius.getText().toString().trim();
         if(radius.isEmpty())
             radius = "10";
@@ -142,7 +134,7 @@ public class Map_activity extends AppCompatActivity implements OnMapReadyCallbac
                 //checking if rent_add object is equal to null
                 assert rent_add!=null;
                 location = rent_add.getArea();
-                if(rent_add.getType().equalsIgnoreCase(type)){
+                if(rent_add.getType().equalsIgnoreCase(test)){
                     try {
                         addressList = geocoder.getFromLocationName(location, 6);
                         if (addressList != null) {
@@ -263,8 +255,8 @@ public class Map_activity extends AppCompatActivity implements OnMapReadyCallbac
 
     @Override
     public void onItemSelected(AdapterView<?> parent, View view, int pos, long id) {
-           String text = parent.getItemAtPosition(pos).toString();
-           Toast.makeText(Map_activity.this,text,Toast.LENGTH_SHORT).show();
+           test = parent.getItemAtPosition(pos).toString();
+           Toast.makeText(Map_activity.this,test,Toast.LENGTH_SHORT).show();
     }
 
     @Override

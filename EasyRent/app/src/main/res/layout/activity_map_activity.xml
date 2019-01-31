@@ -16,16 +16,7 @@
 
 
 
-            <EditText
-                android:layout_width="150dp"
-                android:layout_height="40dp"
-                android:layout_marginLeft="10dp"
-                android:layout_marginTop="5dp"
-                android:padding="10dp"
-                android:hint="  House Type"
-                android:background="@drawable/edit_text_post"
-                android:inputType="text"
-                android:id="@+id/house_type"/>
+
 
 
             <EditText
@@ -34,8 +25,7 @@
                 android:id="@+id/house_area"
                 android:layout_marginTop="5dp"
                 android:background="@drawable/edit_text_post"
-                android:layout_toRightOf="@+id/house_type"
-                android:layout_marginLeft="10dp"
+                android:layout_marginLeft="20dp"
                 android:paddingLeft="10dp"
                 android:hint="   Area Name"
                 />
@@ -44,9 +34,9 @@
                 android:layout_height="40dp"
                 android:id="@+id/radias"
                 android:background="@drawable/edit_text_post"
-                android:layout_below="@+id/house_type"
+                android:layout_below="@+id/house_area"
                 android:layout_marginTop="5dp"
-                android:layout_marginLeft="10dp"
+                android:layout_marginLeft="20dp"
                 android:paddingLeft="10dp"
                 android:hint=" Radius (Km)"
                 />
@@ -61,10 +51,12 @@
                 android:layout_toRightOf="@+id/radias"
                 android:layout_below="@+id/house_area"/>
 
+
             <Spinner
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_toRightOf="@+id/house_area"
+                android:layout_toRightOf= "@+id/house_area"
+
                 android:id="@+id/flatTypeId"
 
                 >
