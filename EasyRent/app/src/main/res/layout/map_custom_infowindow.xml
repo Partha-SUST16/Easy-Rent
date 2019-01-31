@@ -2,7 +2,7 @@
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:background="@color/SkyBlue"
+    android:background="@color/Light"
     android:layout_height="match_parent"
     android:layout_marginTop="10dp"
     android:orientation="vertical">
@@ -22,7 +22,7 @@
         android:layout_marginTop="30dp"
         android:layout_marginLeft="10dp"
         android:textSize="15sp"
-        android:textColor="@color/Maroon"
+        android:textColor="@color/CadetBlue"
         android:layout_marginBottom="10dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -34,7 +34,7 @@
         android:layout_height="wrap_content"
         android:textSize="15sp"
         android:layout_marginLeft="10dp"
-        android:textColor="@color/Maroon"
+        android:textColor="@color/CadetBlue"
         android:layout_marginBottom="10dp"
         android:id="@+id/custom_rentfee"
         android:layout_gravity="center_horizontal"

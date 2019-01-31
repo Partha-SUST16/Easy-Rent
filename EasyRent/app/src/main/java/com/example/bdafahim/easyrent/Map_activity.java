@@ -9,8 +9,11 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
@@ -31,7 +34,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import java.io.IOException;
 import java.util.List;
 
-public class Map_activity extends AppCompatActivity implements OnMapReadyCallback {
+public class Map_activity extends AppCompatActivity implements OnMapReadyCallback, AdapterView.OnItemSelectedListener {
 
     private double lati,longi;
     private String Lat,Lone,area,type,radius,location;
@@ -76,6 +79,12 @@ public class Map_activity extends AppCompatActivity implements OnMapReadyCallbac
                 Dialog.dismiss();
             }
         });
+
+        Spinner spinner = findViewById(R.id.flatTypeId);
+        spinner.setOnItemSelectedListener(this);
+        ArrayAdapter<CharSequence>adapter = ArrayAdapter.createFromResource(this,R.array.houseTypeArray,R.layout.support_simple_spinner_dropdown_item);
+
+        spinner.setAdapter(adapter);
 
     }
 
@@ -250,5 +259,16 @@ public class Map_activity extends AppCompatActivity implements OnMapReadyCallbac
 
         uMap.addMarker(markerOptions);
         uMap.moveCamera(CameraUpdateFactory.newLatLngZoom(temp,10));
+    }
+
+    @Override
+    public void onItemSelected(AdapterView<?> parent, View view, int pos, long id) {
+           String text = parent.getItemAtPosition(pos).toString();
+           Toast.makeText(Map_activity.this,text,Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void onNothingSelected(AdapterView<?> adapterView) {
+
     }
 }

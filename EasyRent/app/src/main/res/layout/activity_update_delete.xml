@@ -50,7 +50,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/uowner"
-                android:paddingTop="10dp"
                 android:paddingBottom="10dp"
                 android:paddingLeft="10dp"
                 android:background="@drawable/edit_round_button"
@@ -65,7 +64,6 @@
             <EditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
                 android:hint="House No."
                 android:id="@+id/urent_house"
                 android:paddingTop="10dp"

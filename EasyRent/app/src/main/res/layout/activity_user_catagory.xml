@@ -30,19 +30,25 @@
 
         <Button
             android:layout_width="150dp"
-            android:layout_height="150dp"
+            android:layout_height="50dp"
             android:id="@+id/need_house"
+            android:text="Need A House"
+            android:textAllCaps="false"
+            android:textColor="@color/WhiteSmoke"
             android:layout_gravity="center_horizontal"
 
-            android:background="@drawable/r2"
+            android:background="@drawable/buutonshape"
 
             />
 
         <Button
             android:layout_width="150dp"
-            android:layout_height="150dp"
-            android:background="@drawable/hw2"
+            android:layout_height="50dp"
+            android:background="@drawable/buutonshape"
             android:id="@+id/house_owner"
+            android:textColor="@color/WhiteSmoke"
+            android:text="House Owner"
+            android:textAllCaps="false"
             android:layout_gravity="center_horizontal"
             android:paddingTop="10dp"
             android:layout_marginTop="30dp"

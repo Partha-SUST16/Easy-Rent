@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".Map_activity"
-    android:background="#868aa1">
+    android:background="@color/grey">
 
     <FrameLayout
         android:layout_width="match_parent"
@@ -13,6 +13,9 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
+
+
+
             <EditText
                 android:layout_width="150dp"
                 android:layout_height="40dp"
@@ -23,6 +26,8 @@
                 android:background="@drawable/edit_text_post"
                 android:inputType="text"
                 android:id="@+id/house_type"/>
+
+
             <EditText
                 android:layout_width="150dp"
                 android:layout_height="40dp"
@@ -55,6 +60,19 @@
                 android:background="@color/WhiteSmoke"
                 android:layout_toRightOf="@+id/radias"
                 android:layout_below="@+id/house_area"/>
+
+            <Spinner
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@+id/house_area"
+                android:id="@+id/flatTypeId"
+
+                >
+
+
+            </Spinner>
+            
+
         </RelativeLayout>
     </FrameLayout>
 
